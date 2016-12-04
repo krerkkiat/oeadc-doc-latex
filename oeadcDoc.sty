@@ -1,0 +1,36 @@
+\ProvidesPackage{oeadcDoc}
+
+\usepackage{ulem}
+\usepackage{xltxtra} % for Thai language support.
+\usepackage{setspace} % To set space in Thai language.
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
+
+% Setup Thai language.
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\setmainfont[Scale=1]{Norasi}
+
+% --- The dotted underline with filling
+\makeatletter
+\newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ .40em{\hss \dotuline{\phantom{a}}\hss }\hfill \kern \z@}
+\makeatother
+
+\newcommand{\Fill}[3]{%
+  \begin{tabular}[t]{@{}l@{}}
+  \makebox[#3]{#1 \Dotfill\dotuline{#2}\Dotfill}\\
+  \end{tabular}%
+}
+
+\newcommand{\FillLeft}[3]{%
+  \begin{tabular}[t]{@{}l@{}}
+  \makebox[#3]{#1 \dotuline{\phantom{a}}\dotuline{#2}\Dotfill}\\
+  \end{tabular}%
+}
+% --- (end)
+
+\newcommand{\ForceIndent}[0]{
+  \hspace{\parindent}\phantom{a}
+}
+
+\pagestyle{empty} % Empty the header and footer section.
+\onehalfspacing
