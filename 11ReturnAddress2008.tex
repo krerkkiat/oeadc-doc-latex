@@ -1,7 +1,10 @@
 \documentclass[a4paper,13pt]{article}
 
 \usepackage{oeadcDoc}
+\usepackage{enumitem}
 \usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
+
+\setlength{\parindent}{2.4em}
 
 \begin{document}
 
@@ -21,6 +24,29 @@
 
 \noindent
 เรื่อง ( ) แจ้งรายงานตัวกลับมาศึกษาต่อ \\
+\phantom{เรื่อง }( ) แจ้งเปลี่ยนแปลงที่อยู่ \\
 เรียน\hspace{10pt}อัครราชทูต (ฝ่ายการศึกษา) \\
+\indent\Fill{ข้าพเจ้า (ชื่อ)}{Firstname Lastname}{5in} \Fill{รหัส}{XXXX}{1.2in} \\
+\indent\hspace{1.6in} (ไทย) \hspace{1.4in} (อังกฤษ) \\
+\Fill{นักเรียนทุน}{Scholarship type}{3in} \Fill{กำลังศึกษาวิชา}{Studying}{3.5in} \\
+\Fill{ระดับ}{Level}{2in} \Fill{ณ สถานศึกษา}{Where}{4.5in} \\
+มีความประสงค์ดังต่อไปนี้
+\begin{itemize}[label={}]
+  \item ( ) \textbf{\textbf{รายงานตัวกลับมาศึกษาต่อ}} ด้วยข้าพเจ้าได้ขออนุมัติเดินทางออกจากประเทศสหรัฐอเมริกา/แคนาดา \\
+  \indent\hspace{0.6in}ไปยัง ( ) ประเทศไทย ( ) \Fill{ประเทศ}{Country}{3.3in} \\
+  \indent\hspace{0.6in}\Fill{ในระหว่างวันที่}{From Date}{2.2in} \Fill{ถึงวันที่}{To Date}{2.2in} นั้น \\
+  \indent\hspace{0.6in}บัดนี้ข้าพเจ้าได้เดินทางกลับมาศึกษาต่อ ณ ประเทศสหรัฐ/แคนาดา แล้ว \Fill{ตั้งแต่วันที่}{Arrival On}{2in} \\
+  \indent\hspace{0.6in}ทั้งนี้ ข้าพเจ้าได้แนบ\textbf{\underline{ภาพถ่าย}}
+  \begin{enumerate}
+    \setlength{\itemindent}{0.5in}
+    \item หน้าแรกของหนังสือเดินทางเล่มล่าสุด
+    \item หน้าที่มี Valid VISA
+    \item หน้าที่มีตราประทับเข้าประเทศที่ข้าพเจ้าเดินทางไป และ
+    \item ใบ I-94 (สำหรับนักเรียนที่ศึกษาในสหรัฐฯ) มาพร้อมนี้
+  \end{enumerate}
+  \item ( ) \textbf{\textbf{แจ้งเปลี่ยนแปลงที่อยู่}}
+  % \item A
+  % \item B
+\end{itemize}
 
 \end{document}
