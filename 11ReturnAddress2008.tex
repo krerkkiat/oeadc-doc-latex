@@ -1,10 +1,56 @@
 \documentclass[a4paper,13pt]{article}
 
-\usepackage{oeadcDoc}
 \usepackage{enumitem} % For item enumeration.
+\usepackage{etoolbox} % For if-statement support and togglable variable.
+\usepackage{tikz}
+\usepackage{oeadcDoc} % Common style for OEADC documents.
 \usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
 
+% Custom commands.
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
 \setlength{\parindent}{2.4em}
+\newtoggle{IsThisDocForCommingBackReport}
+\newtoggle{IsCurrentCountryUSA}
+\newtoggle{IsTargetCountryThailand}
+
+% Variables.
+% General information.
+\newcommand{\FullNameTh}{-}
+\newcommand{\FullNameEng}{-}
+\newcommand{\oeadcCode}{-}
+
+% Education information.
+\newcommand{\ScholarshipName}{-}
+\newcommand{\CurrentlyStudying}{-} % Major or English level.
+\newcommand{\LevelOfStudying}{-}
+\newcommand{\SchoolName}{-}
+
+% Address and contact information.
+\newcommand{\AddrFirstLine}{-}
+\newcommand{\AddrSecondLine}{-}
+\newcommand{\TelephoneNo}{-}
+\newcommand{\Email}{-}
+
+% Dates
+\newcommand{\CurrDate}{-}
+\newcommand{\TravelingStartDate}{-}
+\newcommand{\TravelingEndDate}{-}
+\newcommand{\TravelingActualEndDate}{-}
+
+% Select which document you want to write.
+\toggletrue{IsThisDocForCommingBackReport}
+% \togglefalse{IsThisDocForCommingBackReport}
+
+% What is your country your are in?
+\toggletrue{IsCurrentCountryUSA}
+% \togglefalse{IsCurrentCountryUSA}
+
+% What country are you traveling to?
+\newcommand{\TargetCountry}{-}
+\toggletrue{IsTargetCountryThailand}
+% \togglefalse{IsTargetCountryThailand}
+% \newcommand{\TargetCountry}{PROVIDE NAME HERE}
 
 \begin{document}
 
@@ -29,27 +75,27 @@
 
 % Contact Area
 \begin{flushright}
-\FillLeft{ที่อยู่}{123 Abc St.}{2.3in} \\
-\FillLeft{}{Mars, MR 3400}{2.3in} \\
-\FillLeft{โทรศัพท์}{814-555-1398}{2.3in} \\
-\FillLeft{อีเมล์}{lolipop2@candy.io}{2.3in} \\
-\FillLeft{วันที่}{30 กุมภาพันธ์ 2559}{2.3in} \\
+\FillLeft{ที่อยู่}{\AddrFirstLine}{2.3in} \\
+\FillLeft{}{\AddrSecondLine}{2.3in} \\
+\FillLeft{โทรศัพท์}{\TelephoneNo}{2.3in} \\
+\FillLeft{อีเมล์}{\Email}{2.3in} \\
+\FillLeft{วันที่}{\CurrDate}{2.3in} \\
 \end{flushright}
 
 \noindent
-เรื่อง ( ) แจ้งรายงานตัวกลับมาศึกษาต่อ \\
-\phantom{เรื่อง }( ) แจ้งเปลี่ยนแปลงที่อยู่ \\
+เรื่อง (\iftoggle{IsThisDocForCommingBackReport}{\checkmark}{ \ \ }) แจ้งรายงานตัวกลับมาศึกษาต่อ \\
+\phantom{เรื่อง }(\iftoggle{IsThisDocForCommingBackReport}{ \ \ }{\checkmark}) แจ้งเปลี่ยนแปลงที่อยู่ \\
 เรียน\hspace{10pt}อัครราชทูต (ฝ่ายการศึกษา) \\
-\indent\Fill{ข้าพเจ้า (ชื่อ)}{Firstname Lastname}{5in} \Fill{รหัส}{XXXX}{1.2in} \\
+\indent\Fill{ข้าพเจ้า (ชื่อ)}{\FullNameTh\hspace{40pt}\FullNameEng}{5in} \Fill{รหัส}{\oeadcCode}{1.2in} \\
 \indent\hspace{1.6in} (ไทย) \hspace{1.4in} (อังกฤษ) \\
-\Fill{นักเรียนทุน}{Scholarship type}{3in} \Fill{กำลังศึกษาวิชา}{Studying}{3.5in} \\
-\Fill{ระดับ}{Level}{2in} \Fill{ณ สถานศึกษา}{Where}{4.5in} \\
+\Fill{นักเรียนทุน}{\ScholarshipName}{3in} \Fill{กำลังศึกษาวิชา}{\CurrentlyStudying}{3.5in} \\
+\Fill{ระดับ}{\LevelOfStudying}{2in} \Fill{ณ สถานศึกษา}{\SchoolName}{4.5in} \\
 มีความประสงค์ดังต่อไปนี้
 \begin{itemize}[label={}]
-  \item ( ) \textbf{\textbf{รายงานตัวกลับมาศึกษาต่อ}} ด้วยข้าพเจ้าได้ขออนุมัติเดินทางออกจากประเทศสหรัฐอเมริกา/แคนาดา \\
-  \indent\hspace{0.6in}ไปยัง ( ) ประเทศไทย ( ) \Fill{ประเทศ}{Country}{3.3in} \\
-  \indent\hspace{0.6in}\Fill{ในระหว่างวันที่}{From Date}{2.2in} \Fill{ถึงวันที่}{To Date}{2.2in} นั้น \\
-  \indent\hspace{0.6in}บัดนี้ข้าพเจ้าได้เดินทางกลับมาศึกษาต่อ ณ ประเทศสหรัฐ/แคนาดา แล้ว \Fill{ตั้งแต่วันที่}{Arrival On}{2in} \\
+  \item (\iftoggle{IsThisDocForCommingBackReport}{\checkmark}{ \ \ }) \textbf{\textbf{รายงานตัวกลับมาศึกษาต่อ}} ด้วยข้าพเจ้าได้ขออนุมัติเดินทางออกจากประเทศ\iftoggle{IsCurrentCountryUSA}{สหรัฐอเมริกา/\sout{แคนาดา}}{\sout{สหรัฐอเมริกา}/แคนาดา} \\
+  \indent\hspace{0.6in}ไปยัง (\iftoggle{IsTargetCountryThailand}{\checkmark}{ \ \ }) ประเทศไทย (\iftoggle{IsTargetCountryThailand}{ \ \ }{\checkmark}) \Fill{ประเทศ}{\TargetCountry}{3.3in} \\
+  \indent\hspace{0.6in}\Fill{ในระหว่างวันที่}{\TravelingStartDate}{2.2in} \Fill{ถึงวันที่}{\TravelingEndDate}{2.2in} นั้น \\
+  \indent\hspace{0.6in}บัดนี้ข้าพเจ้าได้เดินทางกลับมาศึกษาต่อ ณ ประเทศ\iftoggle{IsCurrentCountryUSA}{สหรัฐ/\sout{แคนาดา}}{\sout{สหรัฐ}/แคนาดา} แล้ว \Fill{ตั้งแต่วันที่}{\TravelingActualEndDate}{2in} \\
   \indent\hspace{0.6in}ทั้งนี้ ข้าพเจ้าได้แนบ\textbf{\underline{ภาพถ่าย}}
   \begin{enumerate}
     \setlength{\itemindent}{0.5in}
@@ -58,7 +104,7 @@
     \item หน้าที่มีตราประทับเข้าประเทศที่ข้าพเจ้าเดินทางไป และ
     \item ใบ I-94 (สำหรับนักเรียนที่ศึกษาในสหรัฐฯ) มาพร้อมนี้
   \end{enumerate}
-  \item ( ) \textbf{\textbf{แจ้งเปลี่ยนแปลงที่อยู่}} \\
+  \item (\iftoggle{IsThisDocForCommingBackReport}{ \ \ }{\checkmark}) \textbf{\textbf{แจ้งเปลี่ยนแปลงที่อยู่}} \\
   \indent\hspace{0.7in}\Fill{ที่อยู่ใหม่}{New Address}{4.3in} \\
   \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{City}{New City}{2.5in}\Fill{State}{New State}{1.2in}\Fill{Zip}{New Zip}{1in} \\
   \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{โทรศัพท์(}{xxx}{1in}\Fill{)}{New phone}{2in} \\
