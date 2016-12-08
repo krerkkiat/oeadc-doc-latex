@@ -1,15 +1,18 @@
 \documentclass[a4paper,13pt]{article}
 
-\usepackage{oeadcDoc}
-\usepackage{enumitem}
-\usepackage{etoolbox}
-\usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
+\usepackage{etoolbox} % For if-statement support and togglable variable.
+\usepackage[top=0.9in, bottom=0.5in, left=1in, right=1in]{geometry} % Set margin of the page.
 
-\setlength{\parindent}{2.4em}
-\linespread{1.7}
-\newtoggle{IsAuthorizedPersonMale}
+\usepackage{thaiSupport} % Load common confiuration for Thai.
+\usepackage{dottedField} % Special form field.
+
+\setlength{\parindent}{2.4em} % Set paragraph indentation.
+\linespread{1.7} % Simulate ~1.5 line spacing.
+\newtoggle{IsAuthorizedPersonMale} % variable for determining sex of authorized person.
 
 % Variables
+% Fill in your inforamtion here, and it should appear in the PDF nicely.
+% If the width is not enough, you can still manually edit the document.
 \newcommand{\CurrDate}{-}
 \newcommand{\CurrMonth}{-}
 \newcommand{\CurrYear}{-}
@@ -30,25 +33,15 @@
 
 \newcommand{\AuthorizedPersonFullName}{-}
 \toggletrue{IsAuthorizedPersonMale}
-% \togglefalse{IsAuthorizedPersonMale}
+% \togglefalse{IsAuthorizedPersonMale} % Un-commnet this for female.
 
 \newcommand{\RelationToAuthorizedPerson}{-}
 % End of variables.
 
 \begin{document}
 
-\pagestyle{empty}
+\pagestyle{empty} % Empty the header and footer section.
 \restoregeometry
-\pagestyle{fancy}
-\setcounter{page}{1}
-
-% Header/Footer configuration.
-\lhead{}
-\chead{}
-\rhead{}
-\lfoot{}
-\cfoot{}
-\rfoot{}
 
 % Title
 \begin{center}
@@ -99,5 +92,5 @@
 
 \indent\hspace{2.9in}(\makebox[2in]{\Dotfill}) \\
 \indent\hspace{3.7in}สัสดีอำเภอ \\
-\indent\hspace{3.2in}\makebox[0.5in]{\Dotfill}/\makebox[0.5in]{\Dotfill}/\makebox[0.5in]{\Dotfill} \\
+\indent\hspace{3.2in}\makebox[0.5in]{\Dotfill}/\makebox[0.5in]{\Dotfill}/\makebox[0.5in]{\Dotfill}
 \end{document}

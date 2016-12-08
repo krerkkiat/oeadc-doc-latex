@@ -1,7 +1,7 @@
 \documentclass[a4paper,13pt]{article}
 
 \usepackage{oeadcDoc}
-\usepackage{enumitem}
+\usepackage{enumitem} % For item enumeration.
 \usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
 
 \setlength{\parindent}{2.4em}
@@ -12,6 +12,7 @@
 \restoregeometry
 \pagestyle{fancy}
 \setcounter{page}{1}
+\onehalfspacing % The original document use small line (vertical) space.
 
 % Footer confiuration.
 \lhead{}
@@ -73,8 +74,12 @@
 \indent\hspace{2.6in}\Fill{ลงชื่อ}{Signature}{2in} \\
 \indent\hspace{2.9in}(\makebox[1.6in]{Full Name}) \\
 
+
 % Attached document (if any)
 \newpage
+\setcounter{page}{2}
+\lfoot{Full Name | Type | Page \thepage\ of \pageref{LastPage}} % Put some page number.
+
 \section{เอกสารเพิ่มเติม}
 \subsection{หน้าแรกของหนังสือเดินทางเล่มล่าสุด}
 % \begin{figure}[h]
@@ -84,7 +89,6 @@
 % \includepdf[scale=0.68,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{The Second Set of the Notebook Pages}]{krerkkiat-notebook-pages.pdf}
 % \includepdf[scale=0.68,pages=2-,pagecommand=\pagestyle{empty}\pagestyle{fancy}]{krerkkiat-notebook-pages.pdf}
 
-\newpage
 \subsection{หน้าที่มี Valid VISA}
 % \begin{figure}[h]
   % \centering

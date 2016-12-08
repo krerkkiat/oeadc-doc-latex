@@ -1,0 +1,21 @@
+\ProvidesPackage{dottedField}
+
+\usepackage{ulem}
+
+% --- The dotted underline with filling
+\makeatletter
+\newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ .40em{\hss \dotuline{\phantom{a}}\hss }\hfill \kern \z@}
+\makeatother
+
+\newcommand{\Fill}[3]{%
+  \begin{tabular}[t]{@{}l@{}}
+  \makebox[#3]{#1 \Dotfill\dotuline{#2}\Dotfill}\\
+  \end{tabular}%
+}
+
+\newcommand{\FillLeft}[3]{%
+  \begin{tabular}[t]{@{}l@{}}
+  \makebox[#3]{#1 \dotuline{\phantom{a}}\dotuline{#2}\Dotfill}\\
+  \end{tabular}%
+}
+% --- (end)
