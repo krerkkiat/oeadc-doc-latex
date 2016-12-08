@@ -1,0 +1,103 @@
+\documentclass[a4paper,13pt]{article}
+
+\usepackage{oeadcDoc}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
+
+\setlength{\parindent}{2.4em}
+\linespread{1.7}
+\newtoggle{IsAuthorizedPersonMale}
+
+% Variables
+\newcommand{\CurrDate}{-}
+\newcommand{\CurrMonth}{-}
+\newcommand{\CurrYear}{-}
+
+\newcommand{\MyFullName}{-}
+\newcommand{\YearOfBirth}{-}
+\newcommand{\Reason}{-}
+
+\newcommand{\AddrOfWriting}{-}
+
+\newcommand{\AddrNo}{-}
+\newcommand{\AddrStreet}{-}
+\newcommand{\AddrMoo}{-}
+\newcommand{\AddrSubDistrict}{-}
+\newcommand{\AddrDistrict}{-}
+\newcommand{\AddrProvince}{-}
+\newcommand{\AddrZip}{-}
+
+\newcommand{\AuthorizedPersonFullName}{-}
+\toggletrue{IsAuthorizedPersonMale}
+% \togglefalse{IsAuthorizedPersonMale}
+
+\newcommand{\RelationToAuthorizedPerson}{-}
+% End of variables.
+
+\begin{document}
+
+\pagestyle{empty}
+\restoregeometry
+\pagestyle{fancy}
+\setcounter{page}{1}
+
+% Header/Footer configuration.
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+% Title
+\begin{center}
+\Large
+\textbf{\underline{หนังสือมอบอำนาจรับหมายเรียกเข้ารับราชการทหาร}} \\
+\end{center}
+
+\normalsize
+% Contact Area
+\begin{flushright}
+  \FillLeft{เขียนที่}{\AddrOfWriting}{3.6in} \\
+  \Fill{วันที่}{\CurrDate}{0.8in}
+  \Fill{เดือน}{\CurrMonth}{1.3in}
+  \Fill{พ.ศ.}{\CurrYear}{1.2in}
+\end{flushright}
+
+\noindent
+เรื่อง\hspace{13pt}มอบอำนาจให้รับหมายเรียกเข้ารับราชการทหาร แทน \\
+เรียน\hspace{10pt}นายอำเภอ \\
+\indent\hspace{0.5in}\Fill{ข้าพเจ้า นาย}{\MyFullName}{3.5in} ทหารกองเกิน เกิด พ.ศ. \YearOfBirth \\
+อายุ 20 ปี ภูมิลำเนาทหารอยู่ \Fill{บ้านเลขที่}{\AddrNo}{1.5in} \Fill{ถนน}{\AddrStreet}{2in} \Fill{หมู่ที่}{\AddrMoo}{1.3in} \\
+\Fill{ตำบล}{\AddrSubDistrict}{1.5in} \Fill{อำเภอ}{\AddrDistrict}{1.5in} \Fill{จังหวัด}{\AddrProvince}{1.5in}\\
+ไม่สามารถมารับหมายเรียกเข้ารับราชการทหาร ด้วยตัวเองได้ เนื่องจาก \\
+\Fill{}{\Reason}{2.6in}
+จึงมอบหมายให้ \Fill{\iftoggle{IsAuthorizedPersonMale}{นาย/\sout{นาง}}{\sout{นาย}/นาง}}{\AuthorizedPersonFullName}{2.7in}
+\Fill{ซึ่งเป็น}{\RelationToAuthorizedPerson}{3.2in} มารับหมายเรียกเข้ารับราชการทหารแทน ข้าฯ \\
+\indent\hspace{0.5in}ขอได้กรุณาพิจารณามอบหมายเรียกเข้ารับราชการทหาร ให้ตามความประสงค์ด้วย \\
+
+\indent\hspace{2.6in}\Fill{(ลงชื่อ)}{\phantom{a}}{2in} \\
+\indent\hspace{2.9in}\makebox[1.6in]{ผู้มอบอำนาจ} \\
+
+\noindent
+เรียน\hspace{10pt}นายอำเภอ \\
+\indent\hspace{0.5in}\Fill{ด้วย นาย}{\MyFullName}{3in} เกิด พ.ศ. \YearOfBirth\ ต้องมาแสดงตนเพื่อรับหมาย \\
+เรียกเข้ารับราชการทหาร ภายใน พ.ศ. \CurrYear\ แต่\Fill{นาย}{\MyFullName}{3in} \\
+ไม่สามารถมารับหมายเรียกด้วยตนเองได้ \Fill{เนื่องจาก}{\Reason}{3.4in} \\
+จึงมอบหมายให้ ข้าฯ \Fill{ซึ่งเป็น}{\RelationToAuthorizedPerson}{3in} มารับหมายเรียกเข้ารับราชการทหารแทน \\
+และข้าฯ ขอยืนยันว่าจะนำหมายเรียกเข้ารับราชการทหารไปมอบให้ นาย \\
+\Fill{}{\MyFullName}{3in} ให้จงได้ \\
+
+\indent\hspace{2.6in}\Fill{(ลงชื่อ)}{\phantom{a}}{2in} \\
+\indent\hspace{2.9in}\makebox[1.6in]{ผู้รับมอบอำนาจ} \\
+
+\noindent
+เรียน\hspace{10pt}นายอำเภอ \\
+\indent\hspace{5pt}- เพื่อกรุณาทราบ \\
+\indent\hspace{5pt}- ตรวจสอบแล้วถูกต้อง เห็นควรมอบหมายเรียกเข้ารับราชการทหาร ให้รับแทนต่อไป \\
+
+\indent\hspace{2.9in}(\makebox[2in]{\Dotfill}) \\
+\indent\hspace{3.7in}สัสดีอำเภอ \\
+\indent\hspace{3.2in}\makebox[0.5in]{\Dotfill}/\makebox[0.5in]{\Dotfill}/\makebox[0.5in]{\Dotfill} \\
+\end{document}
