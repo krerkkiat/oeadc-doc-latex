@@ -1,0 +1,2 @@
+#!/bin/bash
+xelatex -output-directory=dist $1

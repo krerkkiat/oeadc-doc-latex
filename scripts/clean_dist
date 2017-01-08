@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -rf dist/*.aux
+rm -rf dist/*.log
+rm -rf dist/*.pdf
