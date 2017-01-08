@@ -6,6 +6,14 @@
 \usepackage{oeadcDoc} % Common style for OEADC documents.
 \usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry} % Set margin of the page.
 
+% To include images in the file.
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+% Include pdf file.
+\usepackage[final]{pdfpages}
+\setboolean{@twoside}{false}
+
 % Custom commands.
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
@@ -32,8 +40,12 @@
 \newcommand{\TelephoneNo}{-}
 \newcommand{\Email}{-}
 
-% Dates
+% Date
 \newcommand{\CurrDate}{-}
+
+%%%
+%%% Traveling Section.
+%%%
 \newcommand{\TravelingStartDate}{-}
 \newcommand{\TravelingEndDate}{-}
 \newcommand{\TravelingActualEndDate}{-}
@@ -42,7 +54,7 @@
 \toggletrue{IsThisDocForCommingBackReport}
 % \togglefalse{IsThisDocForCommingBackReport}
 
-% What is your country your are in?
+% What is your country your are studying in?
 \toggletrue{IsCurrentCountryUSA}
 % \togglefalse{IsCurrentCountryUSA}
 
@@ -51,6 +63,27 @@
 \toggletrue{IsTargetCountryThailand}
 % \togglefalse{IsTargetCountryThailand}
 % \newcommand{\TargetCountry}{PROVIDE NAME HERE}
+
+\newcommand{\SignatureFileName}{signature}
+
+% Extra documents.
+\newcommand{\PathToPassportFile}{./extra_document/passport.pdf}
+\newcommand{\PathToVISAFile}{./extra_document/visa.pdf}
+\newcommand{\PathToCBPFile}{./extra_document/I94.pdf}
+
+%%%
+%%% Address Chaging Section.
+%%%
+\newcommand{\NewAddress}{}
+\newcommand{\NewCity}{}
+\newcommand{\NewState}{}
+\newcommand{\NewZip}{}
+
+\newcommand{\NewAreaCode}{}
+\newcommand{\NewPhoneNumber}{}
+\newcommand{\NewEmailAddress}{}
+
+\newcommand{\EffectiveDateOfNewAddress}{}
 
 \begin{document}
 
@@ -105,11 +138,11 @@
     \item ใบ I-94 (สำหรับนักเรียนที่ศึกษาในสหรัฐฯ) มาพร้อมนี้
   \end{enumerate}
   \item (\iftoggle{IsThisDocForCommingBackReport}{ \ \ }{\checkmark}) \textbf{\textbf{แจ้งเปลี่ยนแปลงที่อยู่}} \\
-  \indent\hspace{0.7in}\Fill{ที่อยู่ใหม่}{New Address}{4.3in} \\
-  \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{City}{New City}{2.5in}\Fill{State}{New State}{1.2in}\Fill{Zip}{New Zip}{1in} \\
-  \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{โทรศัพท์(}{xxx}{1in}\Fill{)}{New phone}{2in} \\
-  \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{E-mail address}{New Email address}{3in} \\
-  \indent\hspace{0.7in}ที่อยู่ใหม่นี้ \Fill{จะเริ่มมีผลใช้ตั้งแต่วันที่}{Effective Date}{3.5in} เป็นต้นไป \\
+  \indent\hspace{0.7in}\Fill{ที่อยู่ใหม่}{\NewAddress}{4.3in} \\
+  \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{City}{\NewCity}{2.5in}\Fill{State}{\NewState}{1.2in}\Fill{Zip}{\NewZip}{1in} \\
+  \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{โทรศัพท์ (}{\NewAreaCode}{1in}\Fill{)}{\NewPhoneNumber}{2in} \\
+  \indent\hspace{0.7in}\phantom{ที่อยู่ใหม่}\Fill{E-mail address}{\NewEmailAddress}{3in} \\
+  \indent\hspace{0.7in}ที่อยู่ใหม่นี้ \Fill{จะเริ่มมีผลใช้ตั้งแต่วันที่}{\EffectiveDateOfNewAddress}{3.5in} เป็นต้นไป \\
   \indent\hspace{0.7in}ทั้งนี้ ข้าพเจ้ารับทราบแล้วว่า หากข้าพเจ้ามีประกันสุขภาพอยู่กับบริษัทประกันสุขภาพที่ทางสำนักงานผู้ดูแลนักเรียนฯ จัดไว้ ข้าพเจ้าจะแจ้งการเปลี่ยนแปลงที่อยู่ของข้าพเจ้าให้บริษัทประกันทราบอีกทางหนึ่งด้วย
 \end{itemize}
 จึงเรียนมาเพื่อโปรดทราบ \\
@@ -117,49 +150,34 @@
 \noindent
 \hspace{3.5in}ขอแสดงความนับถือ \\
 
-\indent\hspace{2.6in}\Fill{ลงชื่อ}{Signature}{2in} \\
-\indent\hspace{2.9in}(\makebox[1.6in]{Full Name}) \\
+\indent\hspace{2.6in}\Fill{ลงชื่อ}{\includegraphics[width=0.20\textwidth]{\SignatureFileName}}{2in} \\
+\indent\hspace{2.9in}(\makebox[1.6in]{\FullNameTh}) \\
 
 
 % Attached document (if any)
 \newpage
 \setcounter{page}{2}
-\lfoot{Full Name | Type | Page \thepage\ of \pageref{LastPage}} % Put some page number.
+\lfoot{\FullNameEng\ (\oeadcCode) | Page \thepage\ of \pageref{LastPage}} % Put some page number.
 
 \section{เอกสารเพิ่มเติม}
 \subsection{หน้าแรกของหนังสือเดินทางเล่มล่าสุด}
-% \begin{figure}[h]
-  % \centering
-  % \includegraphics[trim={1cm 12cm 0 10cm},clip=true,width=0.69\textwidth]{kaylee}
-% \end{figure}
-% \includepdf[scale=0.68,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{The Second Set of the Notebook Pages}]{krerkkiat-notebook-pages.pdf}
-% \includepdf[scale=0.68,pages=2-,pagecommand=\pagestyle{empty}\pagestyle{fancy}]{krerkkiat-notebook-pages.pdf}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{\PathToPassportFile}
+\end{figure}
 
 \subsection{หน้าที่มี Valid VISA}
-% \begin{figure}[h]
-  % \centering
-  % \includegraphics[trim={1cm 12cm 0 10cm},clip=true,width=0.69\textwidth]{kaylee}
-% \end{figure}
-% \includepdf[scale=0.68,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{The Second Set of the Notebook Pages}]{krerkkiat-notebook-pages.pdf}
-% \includepdf[scale=0.68,pages=2-,pagecommand=\pagestyle{empty}\pagestyle{fancy}]{krerkkiat-notebook-pages.pdf}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{\PathToVISAFile}
+\end{figure}
 
 \newpage
 \subsection{หน้าที่มีตราประทับเข้าประเทศที่ข้าพเจ้าเดินทางไป}
-% \begin{figure}[h]
-  % \centering
-  % \includegraphics[trim={1cm 12cm 0 10cm},clip=true,width=0.69\textwidth]{kaylee}
-% \end{figure}
-% \includepdf[scale=0.68,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{The Second Set of the Notebook Pages}]{krerkkiat-notebook-pages.pdf}
-% \includepdf[scale=0.68,pages=2-,pagecommand=\pagestyle{empty}\pagestyle{fancy}]{krerkkiat-notebook-pages.pdf}
+หมายเหตุ: ไม่พบตราประทับเข้าประเทศไทย
+%\includepdf[scale=0.85,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{หน้าที่มีตราประทับเข้าประเทศที่ข้าพเจ้าเดินทางไป}]{\PathToStampFile}
 
-\newpage
-\subsection{ใบ I-94 (สำหรับนักเรียนที่ศึกษาในสหรัฐฯ)}
-% \begin{figure}[h]
-  % \centering
-  % \includegraphics[trim={1cm 12cm 0 10cm},clip=true,width=0.69\textwidth]{kaylee}
-% \end{figure}
-% \includepdf[scale=0.68,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{The Second Set of the Notebook Pages}]{krerkkiat-notebook-pages.pdf}
-% \includepdf[scale=0.68,pages=2-,pagecommand=\pagestyle{empty}\pagestyle{fancy}]{krerkkiat-notebook-pages.pdf}
-
+%\subsection{ใบ I-94 (สำหรับนักเรียนที่ศึกษาในสหรัฐฯ)}
+\includepdf[scale=0.85,pages=1,pagecommand=\pagestyle{empty}\pagestyle{fancy}\subsection{ใบ I-94 (สำหรับนักเรียนที่ศึกษาในสหรัฐฯ)}]{\PathToCBPFile}
 
 \end{document}
