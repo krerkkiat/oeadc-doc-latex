@@ -15,3 +15,6 @@ Run `./script/compile <Tex file>`. The output files will be in `dist/`
 - `extra_document/` is the place to put all other PDF files.
 - `images/` is the place to put image files.
 - `images/src/` is the palce to put photo editing files.
+
+## Complete templates
+- 11ReturnAddress2008
